@@ -1,5 +1,6 @@
-import {posts} from "../src/app/lib/placeholder-data.js";
-import {db} from "@vercel/postgres";
+const { db } = require("@vercel/postgres");
+const { posts } = require("../src/app/lib/placeholder-data.js");
+
 
 
 async function seedPosts(client) {
