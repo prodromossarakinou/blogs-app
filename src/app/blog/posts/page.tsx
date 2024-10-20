@@ -5,6 +5,7 @@ import { connectToDB, getPosts } from '@/app/lib/data';
 export default async function Page() {
   const client = await connectToDB();
   const posts = await getPosts();
+  //Showing posts;
   return (
     <>
       {client && <p className='text-green-500 my-2'>Connected to database!</p>}
