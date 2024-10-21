@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { useRouter } from 'next/navigation'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,13 +12,21 @@ export default function Page() {
     date: new Date().toISOString().slice(0, 10)
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
       [name]: value
     }))
-  };
+  }
+
+  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }))
+  }
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,11 +56,11 @@ export default function Page() {
 
         <div>
           <label htmlFor="title" className="block font-medium">Title:</label>
-          <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none" />
+          <input type="text" id="title" name="title" value={formData.title} onChange={(e) => handleChangeInput(e)} className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none" />
         </div>
         <div>
           <label htmlFor="content" className="block font-medium">Content:</label>
-          <textarea id="content" name="content" rows={4} value={formData.content} onChange={handleChange} className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"></textarea>
+          <textarea id="content" name="content" rows={4} value={formData.content} onChange={(e) => handleChange(e)} className="w-full border-2 border-purple-100 p-2 rounded-md focus:border-purple-200 focus:outline-none"></textarea>
         </div>
         <div>
           <label htmlFor="date" className="block font-medium">Date:</label>
